@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>CryptoZombies front-end</title>
+    <script language="javascript" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- <script language="javascript" type="text/javascript" src="web3.min.js"></script>  -->
+    <script type="text/javascript" src="./dist/web3.js"></script>  
+    <script language="javascript" type="text/javascript" src="cryptozombies_abi.js"> </script>
+  </head>
+  <body>
+    <div id="txStatus"></div>
+    <div id="zombies"></div>
+
+    <script>
+var Web3 = require('web3');
+var ethereum = window.ethereum;
+//var web3 = new Web3();
+
+if (typeof web3 !== 'undefined') {
+    console.log("Using web3 detected from external source like Metamask");
+    web3 = new Web3(ethereum);
+
+} else {
+    console.log("Using localhost");
+    web3 = new Web3("http://localhost:8545");
+}
+
+async function enableX() {
+   await ethereum.enable();
+}
+
+enableX();
+var account = web3.eth.accounts[0];
+
+console.log(account);
+
+  </script>
+  </body>
+</html>
